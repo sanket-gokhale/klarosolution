@@ -1,0 +1,101 @@
+/* Outer popup container - acts as a modal overlay */
+.login-popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black overlay */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* Form container */
+.login-popup-container {
+  background-color: #fff; /* White background for contrast */
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 300px;
+  max-width: 90%;
+  text-align: center;
+}
+
+/* Title section */
+.login-popup-tittle {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.login-popup-tittle h2 {
+  color: #ff6600; /* Orange color for title */
+  font-size: 24px;
+  margin: 0;
+}
+
+.login-popup-tittle img {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+/* Input fields */
+.login-popup-inputs {
+  margin-bottom: 20px;
+}
+
+.login-popup-inputs input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 16px;
+  box-sizing: border-box;
+}
+
+/* Button */
+.login-popup-container button {
+  width: 100%;
+  padding: 10px;
+  background-color: #ff6600; /* Orange background */
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-bottom: 15px;
+}
+
+/* Terms and conditions */
+.login-popup-condition {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+  font-size: 14px;
+}
+
+.login-popup-condition input {
+  margin-right: 10px;
+}
+
+.login-popup-condition p {
+  margin: 0;
+  color: #333;
+}
+
+/* Switch between login and sign up */
+.login-popup-container p {
+  font-size: 14px;
+  color: #333;
+  margin: 0;
+}
+
+.login-popup-container p span {
+  color: #ff6600; /* Orange for clickable text */
+  cursor: pointer;
+}

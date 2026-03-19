@@ -1,0 +1,209 @@
+/* Main cart container */
+.cart {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Cart items section wrapper */
+.cart-item {
+  margin-bottom: 20px;
+}
+
+/* Header row for cart items - using grid for column alignment */
+.cart-items-tittle {
+  display: grid;
+  grid-template-columns: 80px 2fr 1fr 1fr 1fr 50px; /* Columns: Image, Title/Name, Price, Qty, Total, Remove */
+  gap: 10px;
+  padding: 15px;
+  font-weight: bold;
+  font-size: 16px;
+  color: #333;
+  background-color: #fff;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+}
+
+.cart-items-tittle p {
+  margin: 0;
+  text-align: center;
+}
+
+.cart-items-tittle p:first-child {
+  text-align: left; /* Align "Items" to left */
+}
+
+.cart-items-tittle p:nth-child(2) { /* Title column */
+  text-align: left; /* Align title/name to left for readability */
+}
+
+/* Individual cart item row - using grid for column alignment, with more padding for box-like appearance */
+.cart-items-item {
+  display: grid;
+  grid-template-columns: 80px 2fr 1fr 1fr 1fr 50px; /* Match header columns */
+  gap: 10px;
+  padding: 20px; /* Increased padding for more box-like feel */
+  font-size: 14px;
+  color: #555;
+  background-color: #fff;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+  align-items: center; /* Vertically center items */
+}
+
+.cart-items-item img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.cart-items-item p {
+  margin: 0;
+  text-align: center;
+}
+
+.cart-items-item p:nth-child(2) { /* Title/Name column */
+  text-align: left;
+}
+
+.cart-items-item p:last-child { /* Remove button */
+  cursor: pointer;
+  color: #e74c3c;
+  font-weight: bold;
+  text-align: center;
+}
+
+.cart-items-item p:last-child:hover {
+  color: #c0392b;
+}
+
+/* Horizontal rules */
+.cart hr {
+  border: none;
+  height: 1px;
+  background-color: #ddd;
+  margin: 5px 0;
+}
+
+/* Bottom section of cart */
+.cart-bottom {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap; /* For responsiveness */
+}
+
+/* Cart total section */
+.cart-total {
+  flex: 1;
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+}
+
+.cart-total h2 {
+  margin: 0 0 15px 0;
+  font-size: 24px;
+  color: #333;
+}
+
+.cart-total-details {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 0;
+  font-size: 16px;
+  color: #555;
+}
+
+.cart-total-details b {
+  font-weight: bold;
+  color: #333;
+}
+
+.cart-total button {
+  width: 100%;
+  padding: 12px;
+  background-color: #28a745;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 15px;
+  transition: background-color 0.3s;
+}
+
+.cart-total button:hover {
+  background-color: #218838;
+}
+
+/* Promo code section */
+.cart-promocode {
+  flex: 1;
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+}
+
+.cart-promocode p {
+  margin: 0 0 10px 0;
+  font-size: 16px;
+  color: #555;
+}
+
+.cart-promocode-input {
+  display: flex;
+  gap: 10px;
+}
+
+.cart-promocode-input input {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.cart-promocode-input button {
+  padding: 10px 15px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.cart-promocode-input button:hover {
+  background-color: #0056b3;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .cart-bottom {
+    flex-direction: column;
+  }
+
+  .cart-items-tittle,
+  .cart-items-item {
+    grid-template-columns: 60px 1fr 1fr 1fr 1fr 40px; /* Smaller columns on mobile */
+    padding: 10px;
+  }
+
+  .cart-items-item img {
+    width: 60px;
+    height: 60px;
+  }
+}

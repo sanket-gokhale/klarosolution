@@ -1,0 +1,333 @@
+/* ExploreMenu.css */
+
+.explore-menu {
+    padding: 30px 15px;
+    background: #ffffff;
+    overflow: hidden;
+}
+
+.explore-menu h1 {
+    text-align: center;
+    font-size: 1.6rem;
+    color: #2c3e50;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.explore-menu-text {
+    text-align: center;
+    font-size: 0.85rem;
+    color: #666;
+    max-width: 100%;
+    margin: 0 auto 20px;
+    line-height: 1.4;
+}
+
+/* Menu List Container */
+.explore-menu-list {
+    display: flex;
+    gap: 12px;
+    padding: 10px 0;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+.explore-menu-list::-webkit-scrollbar {
+    display: none;
+}
+
+/* Menu Item */
+.explore-menu-list-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 80px;
+    flex-shrink: 0;
+    cursor: pointer;
+    position: relative;
+    padding: 10px 5px;
+    border-radius: 10px;
+    background: white;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+/* Circular Image Container */
+.explore-menu-list-item img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #e0e0e0;
+    margin-bottom: 8px;
+    background: white;
+}
+
+/* Active State - Keep original blue color */
+.explore-menu-list-item img.active {
+    transform: scale(1.05);
+    border-color: #3498db;
+    box-shadow: 0 0 10px rgba(52, 152, 219, 0.2);
+}
+
+/* Text Styling - Keep original colors */
+.explore-menu-list-item p {
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: #333;
+    text-align: center;
+    margin: 0;
+    line-height: 1.2;
+    max-width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Circular Cart Icon - Keep original blue color */
+.cart-icon-container {
+    position: absolute;
+    top: -3px;
+    right: -3px;
+    width: 18px;
+    height: 18px;
+    background: #3498db;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.cart-icon {
+    color: white;
+    font-size: 9px;
+}
+
+/* Scroll Controls */
+.scroll-controls {
+    display: none; /* Hide scroll buttons on mobile by default */
+}
+
+/* For devices wider than 400px */
+@media (min-width: 400px) {
+    .explore-menu-list {
+        gap: 15px;
+    }
+    
+    .explore-menu-list-item {
+        min-width: 90px;
+        padding: 12px 8px;
+    }
+    
+    .explore-menu-list-item img {
+        width: 55px;
+        height: 55px;
+        margin-bottom: 10px;
+    }
+    
+    .explore-menu-list-item p {
+        font-size: 0.8rem;
+    }
+    
+    .cart-icon-container {
+        width: 20px;
+        height: 20px;
+    }
+    
+    .cart-icon {
+        font-size: 10px;
+    }
+}
+
+/* Tablet (768px and above) */
+@media (min-width: 768px) {
+    .explore-menu {
+        padding: 40px 20px;
+    }
+    
+    .explore-menu h1 {
+        font-size: 1.8rem;
+    }
+    
+    .explore-menu-text {
+        font-size: 0.9rem;
+        max-width: 500px;
+    }
+    
+    .explore-menu-list {
+        gap: 20px;
+    }
+    
+    .explore-menu-list-item {
+        min-width: 95px;
+        padding: 12px 8px;
+    }
+    
+    .explore-menu-list-item img {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .explore-menu-list-item p {
+        font-size: 0.85rem;
+    }
+    
+    .cart-icon-container {
+        width: 22px;
+        height: 22px;
+        top: -4px;
+        right: -4px;
+    }
+    
+    .cart-icon {
+        font-size: 11px;
+    }
+}
+
+/* Desktop (1024px and above) */
+@media (min-width: 1024px) {
+    .explore-menu {
+        padding: 50px 0;
+    }
+    
+    .explore-menu h1 {
+        font-size: 2.2rem;
+        margin-bottom: 15px;
+    }
+    
+    .explore-menu-text {
+        font-size: 1rem;
+        margin-bottom: 30px;
+    }
+    
+    .explore-menu-list {
+        gap: 25px;
+        padding: 15px 0;
+        overflow-x: visible; /* Remove scroll on desktop */
+        justify-content: center;
+    }
+    
+    .explore-menu-list-item {
+        min-width: 110px;
+        padding: 15px 10px;
+        transition: all 0.2s ease;
+    }
+    
+    .explore-menu-list-item:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+    
+    .explore-menu-list-item:hover img {
+        transform: scale(1.05);
+    }
+    
+    .explore-menu-list-item:hover p {
+        color: #3498db;
+    }
+    
+    .explore-menu-list-item img {
+        width: 70px;
+        height: 70px;
+        margin-bottom: 12px;
+        transition: all 0.3s ease;
+    }
+    
+    .explore-menu-list-item p {
+        font-size: 0.9rem;
+        transition: color 0.2s ease;
+    }
+    
+    .cart-icon-container {
+        width: 24px;
+        height: 24px;
+        top: -5px;
+        right: -5px;
+    }
+    
+    .cart-icon {
+        font-size: 12px;
+    }
+    
+    /* Show scroll controls only on desktop when needed */
+    .scroll-controls {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        margin-top: 15px;
+    }
+    
+    .scroll-btn {
+        background: #3498db;
+        color: white;
+        border: none;
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.2s ease;
+        font-size: 1rem;
+    }
+    
+    .scroll-btn:hover {
+        background: #2980b9;
+    }
+    
+    .scroll-btn:disabled {
+        background: #bdc3c7;
+        cursor: not-allowed;
+    }
+}
+
+/* For very small devices (320px and below) */
+@media (max-width: 320px) {
+    .explore-menu-list {
+        gap: 8px;
+    }
+    
+    .explore-menu-list-item {
+        min-width: 75px;
+        padding: 8px 4px;
+    }
+    
+    .explore-menu-list-item img {
+        width: 45px;
+        height: 45px;
+    }
+    
+    .explore-menu-list-item p {
+        font-size: 0.7rem;
+    }
+    
+    .cart-icon-container {
+        width: 16px;
+        height: 16px;
+        top: -2px;
+        right: -2px;
+    }
+    
+    .cart-icon {
+        font-size: 8px;
+    }
+}
+
+/* Prevent text selection on touch devices */
+.explore-menu-list-item {
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+/* Fix for iOS Safari scrolling */
+@supports (-webkit-touch-callout: none) {
+    .explore-menu-list {
+        padding-bottom: 20px;
+        margin-bottom: -20px;
+    }
+}

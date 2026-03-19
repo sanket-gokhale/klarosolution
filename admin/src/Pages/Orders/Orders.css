@@ -1,0 +1,101 @@
+/* ===== Main Wrapper ===== */
+.order {
+  width: 90%;
+  margin: 40px auto;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.order h3 {
+  margin-bottom: 25px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid #ddd;
+  font-weight: 600;
+  color: #222;
+}
+
+/* ===== Order List Container ===== */
+.order-list {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+/* ===== Each Order Card ===== */
+.order-item {
+  display: grid;
+  grid-template-columns: 2.5fr 1.5fr 2fr 1fr 1fr 1fr 1.5fr;
+  align-items: center;
+  gap: 15px;
+  padding: 18px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  background: #ffffff;
+}
+
+/* Text Styling */
+.order-item p {
+  margin: 0;
+  font-size: 14px;
+  color: #333;
+}
+
+/* Service Items */
+.order-item-serviec {
+  font-weight: 500;
+}
+
+/* Customer Name */
+.order-item-name {
+  font-weight: 600;
+}
+
+/* Address Styling */
+.order-item-address p {
+  margin: 0;
+  font-size: 13px;
+  color: #555;
+}
+
+/* Phone */
+.order-item-phone {
+  font-size: 13px;
+}
+
+/* Dropdown */
+.order-item select {
+  padding: 6px 10px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  font-size: 13px;
+  cursor: pointer;
+  background-color: #f9f9f9;
+}
+
+/* Hover Effect (Very Light Classic) */
+.order-item:hover {
+  background-color: #fafafa;
+}
+
+/* ===== Responsive Design ===== */
+@media (max-width: 1024px) {
+  .order-item {
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+}
+
+@media (max-width: 768px) {
+  .order {
+    width: 95%;
+  }
+
+  .order-item {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    padding: 15px;
+  }
+
+  .order-item select {
+    width: 100%;
+  }
+}

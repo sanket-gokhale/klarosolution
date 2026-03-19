@@ -1,0 +1,328 @@
+.appainces-item {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    overflow: hidden;
+    background-color: #fff;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+    height: 100%;
+    position: relative;
+}
+
+.appainces-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+}
+
+.appainces-item-img-container {
+    width: 100%;
+    height: 220px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    position: relative;
+}
+
+.appainces-item-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    padding: 20px;
+    transition: transform 0.5s ease;
+}
+
+.appainces-item:hover .appainces-item-image {
+    transform: scale(1.08);
+}
+
+/* Add icon styles */
+.appainces-item-img-container .add {
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(135deg, orange 100%);
+    border-radius: 50%;
+    padding: 10px;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(58, 134, 255, 0.3);
+    transition: all 0.3s ease;
+    border: 3px solid white;
+    z-index: 2;
+}
+
+.appainces-item-img-container .add:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(58, 134, 255, 0.4);
+}
+
+.appainces-item-img-container .add:active {
+    transform: scale(0.95);
+}
+
+/* Counter container */
+.appainces-iteam-counter {
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: white;
+    border-radius: 50px;
+    padding: 5px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    border: 2px solid #f0f0f0;
+    min-width: 110px;
+    justify-content: space-between;
+    z-index: 2;
+}
+
+/* Counter buttons */
+.appainces-iteam-counter img {
+    width: 32px;
+    height: 32px;
+    padding: 6px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.appainces-iteam-counter img:first-child {
+    background-color: #ffeaea;
+}
+
+.appainces-iteam-counter img:first-child:hover {
+    background-color: #ffd1d1;
+    transform: scale(1.05);
+}
+
+.appainces-iteam-counter img:last-child {
+    background-color: #e8f5e9;
+}
+
+.appainces-iteam-counter img:last-child:hover {
+    background-color: #c8e6c9;
+    transform: scale(1.05);
+}
+
+/* Counter number */
+.appainces-iteam-counter p {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 700;
+    color: #333;
+    min-width: 30px;
+    text-align: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Item info section */
+.appainces-item-info {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    flex-grow: 1;
+}
+
+.appainces-item-rating {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 12px;
+}
+
+.appainces-item-rating p {
+    margin: 0;
+    font-size: 17px;
+    font-weight: 700;
+    color: #222;
+    line-height: 1.4;
+    flex-grow: 1;
+    font-family: 'Segoe UI', system-ui, sans-serif;
+}
+
+.appainces-item-rating img {
+    height: 18px;
+    width: auto;
+    min-width: 90px;
+    margin-top: 2px;
+}
+
+.appainces-item-desc {
+    margin: 0;
+    font-size: 14px;
+    color: #666;
+    line-height: 1.6;
+    flex-grow: 1;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.appainces-item-price {
+    margin: 0;
+    font-size: 20px;
+    font-weight: 800;
+    color: #2e7d32;
+    margin-top: 10px;
+    font-family: 'Segoe UI', system-ui, sans-serif;
+}
+
+/* Badge for items in cart */
+.appainces-item::after {
+    content: '';
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    width: 10px;
+    height: 10px;
+    background-color: #4caf50;
+    border-radius: 50%;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.appainces-item.in-cart::after {
+    opacity: 1;
+    box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.2);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .appainces-item-img-container {
+        height: 180px;
+    }
+    
+    .appainces-item-img-container .add {
+        width: 36px;
+        height: 36px;
+        padding: 8px;
+    }
+    
+    .appainces-iteam-counter {
+        min-width: 100px;
+        padding: 4px;
+    }
+    
+    .appainces-iteam-counter img {
+        width: 28px;
+        height: 28px;
+        padding: 5px;
+    }
+    
+    .appainces-iteam-counter p {
+        font-size: 16px;
+    }
+    
+    .appainces-item-info {
+        padding: 16px;
+    }
+    
+    .appainces-item-rating p {
+        font-size: 16px;
+    }
+    
+    .appainces-item-desc {
+        font-size: 13px;
+        -webkit-line-clamp: 2;
+    }
+    
+    .appainces-item-price {
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 480px) {
+    .appainces-item-img-container {
+        height: 160px;
+    }
+    
+    .appainces-item-img-container .add {
+        width: 32px;
+        height: 32px;
+        padding: 7px;
+        bottom: 12px;
+        right: 12px;
+    }
+    
+    .appainces-iteam-counter {
+        min-width: 90px;
+        gap: 6px;
+        bottom: 12px;
+        right: 12px;
+    }
+    
+    .appainces-iteam-counter img {
+        width: 24px;
+        height: 24px;
+        padding: 4px;
+    }
+    
+    .appainces-iteam-counter p {
+        font-size: 15px;
+        min-width: 24px;
+    }
+    
+    .appainces-item-rating {
+        flex-direction: column;
+        gap: 8px;
+    }
+    
+    .appainces-item-rating p {
+        width: 100%;
+    }
+    
+    .appainces-item-rating img {
+        align-self: flex-start;
+    }
+}
+
+/* Animation for counter */
+@keyframes popIn {
+    0% {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.appainces-iteam-counter {
+    animation: popIn 0.3s ease-out;
+}
+
+/* Add to cart pulse animation */
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(58, 134, 255, 0.4);
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(58, 134, 255, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(58, 134, 255, 0);
+    }
+}
+
+.appainces-item-img-container .add.pulse {
+    animation: pulse 1.5s infinite;
+}
+
+/* Counter change animation */
+.appainces-iteam-counter p {
+    transition: transform 0.2s ease;
+}
+
+.appainces-iteam-counter p.changed {
+    transform: scale(1.3);
+}

@@ -1,0 +1,270 @@
+/* Sidebar Main Container */
+.sidebar {
+  width: 240px;
+  min-height: 100vh;
+  background: linear-gradient(180deg, #1e293b, #0f172a);
+  color: white;
+  position: sticky;
+  top: 0;
+  left: 0;
+  padding-top: 30px;
+  box-shadow: 4px 0 15px rgba(0, 0, 0, 0.2);
+  overflow-y: auto;
+  transition: all 0.3s ease;
+  z-index: 1000;
+}
+
+/* Scrollbar Styling */
+.sidebar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+  background: #334155;
+  border-radius: 10px;
+}
+
+/* Sidebar Options Wrapper */
+.sidebar-options {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 0 20px;
+}
+
+/* Each Option */
+.sidebar-option {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 14px 18px;
+  cursor: pointer;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+/* Icon */
+.sidebar-option img {
+  width: 22px;
+  filter: brightness(0) invert(1); /* makes icons white */
+  transition: transform 0.2s ease;
+}
+
+/* Text */
+.sidebar-option p {
+  font-size: 15px;
+  font-weight: 500;
+  margin: 0;
+  color: #e2e8f0;
+  white-space: nowrap;
+}
+
+/* Hover Effect */
+.sidebar-option:hover {
+  background-color: rgba(255, 255, 255, 0.08);
+  transform: translateX(5px);
+}
+
+.sidebar-option:hover img {
+  transform: scale(1.1);
+}
+
+/* Active Item */
+.sidebar-option.active {
+  background-color: #2563eb;
+}
+
+/* Left Active Indicator */
+.sidebar-option.active::before {
+  content: "";
+  position: absolute;
+  left: -20px;
+  width: 5px;
+  height: 60%;
+  background-color: #38bdf8;
+  border-radius: 5px;
+}
+
+/* ========== RESPONSIVE DESIGN ========== */
+
+/* Tablet Devices (768px to 1024px) */
+@media (max-width: 1024px) and (min-width: 769px) {
+  .sidebar {
+    width: 200px;
+  }
+  
+  .sidebar-option {
+    padding: 12px 15px;
+  }
+  
+  .sidebar-option p {
+    font-size: 14px;
+  }
+  
+  .sidebar-option img {
+    width: 20px;
+  }
+}
+
+/* Mobile Landscape (up to 768px) */
+@media (max-width: 768px) {
+  .sidebar {
+    width: 80px;
+    padding-top: 20px;
+  }
+
+  .sidebar-option p {
+    display: none; /* Hide text on mobile */
+  }
+
+  .sidebar-option {
+    justify-content: center;
+    padding: 12px;
+  }
+  
+  .sidebar-option img {
+    width: 24px; /* Slightly larger icons on mobile */
+  }
+  
+  .sidebar-option:hover {
+    transform: translateX(3px);
+  }
+  
+  /* Adjust active indicator for mobile */
+  .sidebar-option.active::before {
+    left: -10px;
+    width: 4px;
+    height: 40%;
+  }
+}
+
+/* Small Mobile Devices (up to 480px) */
+@media (max-width: 480px) {
+  .sidebar {
+    width: 60px;
+    padding-top: 15px;
+  }
+  
+  .sidebar-options {
+    padding: 0 10px;
+    gap: 5px;
+  }
+  
+  .sidebar-option {
+    padding: 10px;
+  }
+  
+  .sidebar-option img {
+    width: 22px;
+  }
+  
+  /* Optional: Show tooltips on long press for accessibility */
+  .sidebar-option:active::after {
+    content: attr(data-label);
+    position: absolute;
+    left: 70px;
+    background: #1e293b;
+    padding: 5px 10px;
+    border-radius: 6px;
+    font-size: 12px;
+    color: white;
+    white-space: nowrap;
+    z-index: 1001;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    border: 1px solid #334155;
+  }
+}
+
+/* Very Small Devices (up to 320px) */
+@media (max-width: 320px) {
+  .sidebar {
+    width: 50px;
+  }
+  
+  .sidebar-options {
+    padding: 0 5px;
+  }
+  
+  .sidebar-option {
+    padding: 8px;
+  }
+  
+  .sidebar-option img {
+    width: 20px;
+  }
+}
+
+/* Optional: Collapsible Sidebar for Mobile */
+@media (max-width: 768px) {
+  .sidebar.collapsed {
+    width: 0;
+    padding: 0;
+    overflow: hidden;
+  }
+  
+  /* Toggle button for mobile */
+  .sidebar-toggle {
+    display: block;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    background: #2563eb;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    z-index: 1001;
+    transition: all 0.3s ease;
+  }
+  
+  .sidebar-toggle:hover {
+    transform: scale(1.1);
+    background: #1d4ed8;
+  }
+}
+
+/* High-resolution screens */
+@media (min-width: 1440px) {
+  .sidebar {
+    width: 280px;
+  }
+  
+  .sidebar-option {
+    padding: 16px 20px;
+  }
+  
+  .sidebar-option p {
+    font-size: 16px;
+  }
+  
+  .sidebar-option img {
+    width: 24px;
+  }
+}
+
+/* Dark mode support (if user prefers dark theme) */
+@media (prefers-color-scheme: dark) {
+  .sidebar {
+    background: linear-gradient(180deg, #0f172a, #020617);
+  }
+}
+
+/* Accessibility - Reduce motion if user prefers */
+@media (prefers-reduced-motion: reduce) {
+  .sidebar,
+  .sidebar-option,
+  .sidebar-option img,
+  .sidebar-toggle {
+    transition: none;
+  }
+  
+  .sidebar-option:hover {
+    transform: none;
+  }
+}

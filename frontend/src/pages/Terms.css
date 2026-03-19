@@ -1,0 +1,126 @@
+/* ========================================
+   Terms & Conditions - Classic Static CSS
+   ======================================== */
+
+/* Container & Typography Base */
+.terms-page {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  font-family: 'Georgia', 'Times New Roman', Times, serif;
+  font-size: 16px;
+  line-height: 1.7;
+  color: #333;
+  background: #fff;
+}
+
+.terms-page h1 {
+  font-size: 2.2em;
+  font-weight: bold;
+  color: #2c3e50;
+  margin-bottom: 10px;
+  border-bottom: 3px solid #3498db;
+  padding-bottom: 10px;
+}
+
+.terms-date {
+  color: #7f8c8d;
+  font-style: italic;
+  margin-bottom: 30px;
+  font-size: 0.95em;
+}
+
+/* Paragraphs */
+.terms-page p {
+  margin-bottom: 20px;
+  text-align: justify;
+}
+
+.terms-page p:last-child {
+  margin-bottom: 0;
+}
+
+/* Section Headings */
+.terms-section {
+  font-size: 1.3em;
+  font-weight: 600;
+  color: #2c3e50;
+  margin-top: 35px;
+  margin-bottom: 15px;
+  padding-top: 20px;
+  border-left: 4px solid #3498db;
+  padding-left: 15px;
+}
+
+/* Lists */
+.terms-page ul {
+  list-style: disc;
+  margin: 15px 0 15px 30px;
+}
+
+.terms-page li {
+  margin-bottom: 8px;
+  padding-left: 5px;
+}
+
+/* Strong text */
+.terms-page strong {
+  font-weight: 700;
+  color: #2c3e50;
+}
+
+/* Small margins */
+.terms-small-gap {
+  margin-top: 10px;
+}
+
+/* Contact Info */
+.contact-info {
+  margin-top: 10px;
+  padding: 20px;
+  background: #f8f9fa;
+  border-left: 5px solid #3498db;
+  font-size: 0.95em;
+}
+
+.contact-info strong {
+  color: #27ae60;
+}
+
+/* Print Styles */
+@media print {
+  .terms-page {
+    padding: 20px;
+    max-width: none;
+  }
+  
+  .terms-section {
+    border-left: 2px solid #000;
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .terms-page {
+    padding: 30px 15px;
+    font-size: 15px;
+  }
+  
+  .terms-page h1 {
+    font-size: 1.8em;
+  }
+  
+  .terms-section {
+    font-size: 1.2em;
+  }
+}
+
+@media (max-width: 480px) {
+  .terms-page {
+    padding: 20px 10px;
+  }
+  
+  .terms-page h1 {
+    font-size: 1.6em;
+  }
+}
