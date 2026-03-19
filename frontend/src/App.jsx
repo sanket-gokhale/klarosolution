@@ -7,27 +7,26 @@ import Cart from './pages/Cart/Cart'
 import PlaceService from './pages/PlaceService/PlaceService'
 import Footer from './components/Footer/Footer'
 import LoginPopup from './components/LoginPopup/LoginPopup'
-import Verify from './pages/verify/verify'
 import MyOrders from './pages/MyOrders/MyOrders'
 import Terms from './pages/Terms'
 
 
 
 const App = () => {
-  const [showLogin,setShowLogin]=useState(false)
+  const [showLogin, setShowLogin] = useState(false)
   return (
     <>
-  {showLogin?<LoginPopup setShowLogin={setShowLogin}/>:<></>}
+      {showLogin ? <LoginPopup setShowLogin={setShowLogin} /> : <></>}
       <div className='app'>
 
-        <Navbar setShowLogin={setShowLogin}/>
+        <Navbar setShowLogin={setShowLogin} />
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/cart' element={<Cart />} />
           <Route path='/order' element={<PlaceService />} />
-          <Route path='/verify' element={<Verify/>} />
-          <Route path='/myorders' element={<MyOrders/>} />
-          <Route path='/terms' element={<Terms/>}/>
+
+          <Route path='/myorders' element={<MyOrders />} />
+          <Route path='/terms' element={<Terms />} />
         </Routes>
       </div>
       <Footer />
