@@ -50,9 +50,14 @@ const StoreContextProvider = (props) => {
         setAppaincesList(response.data.data)
     }
 
-    const loadCartData = async (token) =>{
-        const response = await axios.post(url+"/api/cart/get",{},{headers:{token}});
-        setCartItems(response.data.cartData);
+    const loadCartData = async (token) => {
+        try {
+            const response = await axios.post(url+"/api/cart/get",{},{headers:{token}});
+            setCartItems(response.data.cartData || {});
+        } catch (error) {
+            console.error("Error loading cart data:", error);
+            setCartItems({});
+        }
     }
 
 
