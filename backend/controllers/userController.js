@@ -77,13 +77,20 @@ const sendOtp = async (req, res) => {
             return res.json({ success: false, message: "User not found" });
         }
         
+        if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
+            console.error("CRITICAL: EMAIL_USER or EMAIL_PASS missing inside Render environment variables!");
+            return res.json({ success: false, message: "Server configuration error: email credentials missing" });
+        }
+
         const otp = Math.floor(100000 + Math.random() * 900000).toString();
         user.resetOtp = otp;
         user.resetOtpExpire = Date.now() + 15 * 60 * 1000;
         await user.save();
         
         const transporter = nodemailer.createTransport({
-            service: 'gmail',
+            host: 'smtp.gmail.com',
+            port: 465,
+            secure: true,
             auth: {
                 user: process.env.EMAIL_USER,
                 pass: process.env.EMAIL_PASS
@@ -100,7 +107,7 @@ const sendOtp = async (req, res) => {
         await transporter.sendMail(mailOptions);
         res.json({ success: true, message: "OTP sent to your email" });
     } catch (error) {
-        console.log(error);
+        console.log("Nodemailer error: ", error);
         res.json({ success: false, message: "Error sending OTP" });
     }
 }
