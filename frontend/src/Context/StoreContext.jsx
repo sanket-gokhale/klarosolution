@@ -8,7 +8,7 @@ const StoreContextProvider = (props) => {
 
     const [cartItems, setCartItems] = useState({});
 
-   const url = "http://localhost:4000";
+   const url = "https://klarosolution.onrender.com";
    const [token,setToken] = useState("");
    const [appainces_list,setAppaincesList] = useState([])
 
