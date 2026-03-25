@@ -111,7 +111,7 @@ const sendOtp = async (req, res) => {
         res.json({ success: true, message: "OTP sent to your email" });
     } catch (error) {
         console.log("Email API error: ", error);
-        res.json({ success: false, message: "Error sending OTP" });
+        res.json({ success: false, message: `Error sending OTP: ${error.message}` });
     }
 }
 
