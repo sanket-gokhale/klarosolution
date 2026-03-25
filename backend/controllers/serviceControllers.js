@@ -4,20 +4,21 @@ import fs from 'fs';
 
 // add service item
 const addService = async (req,res) => {
-  
-  let image_filename = `${req.file.filename}`;
-
-   const service = new serviceModel({
-    name:req.body.name,
-    description:req.body.description,
-    price:req.body.price,
-    category:req.body.category,
-    image:image_filename
-  })
-
-  
-
   try {
+    if (!req.file) {
+      return res.json({ success: false, message: "Image is required" });
+    }
+  
+    let image_filename = `${req.file.filename}`;
+
+    const service = new serviceModel({
+      name:req.body.name,
+      description:req.body.description,
+      price:req.body.price,
+      category:req.body.category,
+      image:image_filename
+    })
+
     await service.save();
     res.json({ success: true, message: "Service Added" })
   } catch (error) {
@@ -45,7 +46,15 @@ const listService = async (req,res) =>{
 const removeService = async (req,res) =>{
 try {
   const service = await serviceModel.findById(req.body.id);
-  fs.unlink(`uploads/${service.image}`,()=>{})
+  if (!service) {
+    return res.json({ success: false, message: "Service not found" });
+  }
+
+  if (service.image) {
+    fs.unlink(`uploads/${service.image}`,(err)=>{
+      if (err) console.error("Failed to delete image:", err);
+    })
+  }
 
   await serviceModel.findByIdAndDelete(req.body.id);
   res.json({success:true,message:"Service Removed"})
