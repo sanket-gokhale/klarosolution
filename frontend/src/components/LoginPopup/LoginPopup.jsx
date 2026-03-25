@@ -76,16 +76,26 @@ const LoginPopup = ({setShowLogin}) => {
         }
     }
 
+    const [loading, setLoading] = useState(false);
+
     const onSubmitHandler = async (event) => {
         event.preventDefault();
-        if (currState === "Login" || currState === "Sign Up") {
-            await onLogin();
-        } else if (currState === "Forgot Password") {
-            await onSendOtp();
-        } else if (currState === "Verify OTP") {
-            await onVerifyOtp();
-        } else if (currState === "Change Password") {
-            await onChangePassword();
+        setLoading(true);
+        try {
+            if (currState === "Login" || currState === "Sign Up") {
+                await onLogin();
+            } else if (currState === "Forgot Password") {
+                await onSendOtp();
+            } else if (currState === "Verify OTP") {
+                await onVerifyOtp();
+            } else if (currState === "Change Password") {
+                await onChangePassword();
+            }
+        } catch (error) {
+            console.error(error);
+            alert("Something went wrong. Please try again.");
+        } finally {
+            setLoading(false);
         }
     }
     
@@ -111,16 +121,19 @@ const LoginPopup = ({setShowLogin}) => {
                 
                 {currState==="Change Password" && <input name='newPassword' onChange={onChangeHandler} value={data.newPassword} type='password' placeholder='Enter new password' required />}
             </div>
-            <button type='submit'>
-                {currState==="Sign Up" ? "Create account" :
+            <button type='submit' disabled={loading}>
+                {loading ? "Processing..." :
+                 currState==="Sign Up" ? "Create account" :
                  currState==="Login" ? "Login" :
                  currState==="Forgot Password" ? "Send OTP" :
                  currState==="Verify OTP" ? "Verify OTP" : "Change Password"}
             </button>
-            <div className="login-popup-condition">
-                <input type='checkbox' required/>
-                <p>By continuing,i agree to the terms and condition</p>
-            </div>
+            { (currState==="Login" || currState==="Sign Up") && 
+                <div className="login-popup-condition">
+                    <input type='checkbox' required/>
+                    <p>By continuing, i agree to the terms and condition</p>
+                </div>
+            }
             {
                 currState==="Login"
                 ?<>
