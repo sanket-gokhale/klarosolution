@@ -77,8 +77,8 @@ const sendOtp = async (req, res) => {
             return res.json({ success: false, message: "User not found" });
         }
         
-        if (!process.env.BREVO_API_KEY || !process.env.EMAIL_USER) {
-            console.error("CRITICAL: BREVO_API_KEY or EMAIL_USER missing inside Render environment variables!");
+        if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
+            console.error("CRITICAL: EMAIL_USER or EMAIL_PASS missing inside environment variables!");
             return res.json({ success: false, message: "Server configuration error: email API credentials missing" });
         }
 
@@ -87,30 +87,27 @@ const sendOtp = async (req, res) => {
         user.resetOtpExpire = Date.now() + 15 * 60 * 1000;
         await user.save();
         
-        // Sending Email using Brevo's HTTP API to bypass Render's SMTP Port blocking!
-        const response = await fetch("https://api.brevo.com/v3/smtp/email", {
-            method: "POST",
-            headers: {
-                "accept": "application/json",
-                "api-key": process.env.BREVO_API_KEY,
-                "content-type": "application/json"
-            },
-            body: JSON.stringify({
-                sender: { email: process.env.EMAIL_USER, name: "Klaro Solutions" },
-                to: [{ email: email }],
-                subject: "Password Reset OTP",
-                textContent: `Your OTP for password reset is ${otp}. It is valid for 15 minutes.`
-            })
+        // Sending Email using Nodemailer with Gmail App Password
+        const transporter = nodemailer.createTransport({
+            service: 'gmail',
+            auth: {
+                user: process.env.EMAIL_USER,
+                pass: process.env.EMAIL_PASS
+            }
         });
 
-        if (!response.ok) {
-            const errorData = await response.json();
-            throw new Error(`Brevo HTTP Error: ${JSON.stringify(errorData)}`);
-        }
+        const mailOptions = {
+            from: process.env.EMAIL_USER,
+            to: email,
+            subject: "Password Reset OTP",
+            text: `Your OTP for password reset is ${otp}. It is valid for 15 minutes.`
+        };
+
+        await transporter.sendMail(mailOptions);
 
         res.json({ success: true, message: "OTP sent to your email" });
     } catch (error) {
-        console.log("Email API error: ", error);
+        console.log("Email sending error: ", error);
         res.json({ success: false, message: `Error sending OTP: ${error.message}` });
     }
 }
