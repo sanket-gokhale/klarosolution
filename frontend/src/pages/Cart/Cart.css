@@ -207,3 +207,70 @@
     height: 60px;
   }
 }
+
+/* Small device box layout: hide header titles and show each item in a compact box */
+@media (max-width: 480px) {
+  /* Hide header row (the title row) but keep item rows which also use the class */
+  .cart-items-tittle:not(.cart-items-item) {
+    display: none;
+  }
+
+  .cart-items-item {
+    display: block; /* vertical stacking inside the item box */
+    padding: 12px;
+    border-radius: 8px;
+    background: #fff;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    margin-bottom: 12px;
+  }
+
+  .cart-items-item img {
+    float: left;
+    width: 64px;
+    height: 64px;
+    margin-right: 12px;
+    border-radius: 6px;
+  }
+
+  /* First paragraph is the item name - place it next to the image */
+  .cart-items-item p:nth-of-type(1) {
+    display: block;
+    margin: 0 0 6px 0;
+    font-weight: 600;
+    color: #333;
+    margin-left: 0; /* keep next to floated image */
+  }
+
+  /* The following p elements represent Price, Quantity, Total and Remove - show them in a single row */
+  .cart-items-item p:nth-of-type(n+2) {
+    display: inline-block;
+    width: 22%;
+    margin: 6px 1% 0 0;
+    text-align: center;
+    font-size: 0.95rem;
+    color: #555;
+    vertical-align: middle;
+  }
+
+  /* Make remove button more tappable */
+  .cart-items-item p:last-child {
+    color: #e74c3c;
+    font-weight: 700;
+    cursor: pointer;
+    width: 12%;
+    text-align: center;
+  }
+
+  /* Clear float after the box so hr and next items render correctly */
+  .cart-items-item::after {
+    content: "";
+    display: block;
+    clear: both;
+  }
+
+  /* Reduce image size in extreme small screens */
+  @media (max-width: 360px) {
+    .cart-items-item img { width: 56px; height: 56px; }
+    .cart-items-item p:nth-of-type(n+2) { width: 23%; font-size: 0.9rem; }
+  }
+}

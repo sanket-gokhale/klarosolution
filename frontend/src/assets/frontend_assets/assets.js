@@ -80,7 +80,7 @@ export const menu_list = [
         menu_image: imenu_5
     },
     {
-        menu_name: "Fan/Coller",
+        menu_name: "Fan/Cooler",
         menu_image: imenu_6
     },
     {

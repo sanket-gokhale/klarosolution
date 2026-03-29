@@ -331,3 +331,52 @@
         margin-bottom: -20px;
     }
 }
+
+/* Improved small-device support (up to small phones ~480px) */
+@media (max-width: 480px) {
+    .explore-menu-list {
+        gap: 10px;
+        padding: 8px 0;
+    }
+
+    .explore-menu-list-item {
+        min-width: 64px; /* allow more items to fit on screen */
+        padding: 8px 6px;
+    }
+
+    .explore-menu-list-item img {
+        width: 42px;
+        height: 42px;
+    }
+
+    /* Allow labels to wrap up to two lines on small screens and clamp overflow */
+    .explore-menu-list-item p {
+        font-size: 0.72rem;
+        white-space: normal;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+    /* clamp order: vendor-prefixed first, then standard fallback */
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        line-height: 1.1;
+        max-width: 80px;
+        overflow-wrap: anywhere;
+        word-break: break-word;
+    }
+
+    .explore-menu-list-item {
+        box-shadow: 0 1px 6px rgba(0,0,0,0.06);
+        border-radius: 8px;
+    }
+
+    /* Slightly smaller cart/icon sizes on small devices */
+    .cart-icon-container {
+        width: 16px;
+        height: 16px;
+        top: -2px;
+        right: -2px;
+    }
+    .cart-icon { font-size: 9px; }
+}
