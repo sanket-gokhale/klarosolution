@@ -61,13 +61,12 @@ const PlaceService = () => {
   try {
     const response = await axios.post(
       url + "/api/order/place",
-      orderData,
-      { headers: { token } }
+      orderData
     );
 
     if (response.data.success) {
       alert("Service Placed Successfully ");
-       window.location.replace("/myorders");
+       window.location.replace("/");
     } else {
       alert("Error placing order");
     }
@@ -82,10 +81,7 @@ const navigate = useNavigate();
   
 useEffect(()=>{
 
-  if (!token) {
-    navigate('/cart')
-  }
-  else if (getTotalCartAmount()===0) 
+  if (getTotalCartAmount()===0) 
   {
     navigate('/cart')
   }

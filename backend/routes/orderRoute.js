@@ -5,7 +5,7 @@ import { updatePaymentStatus } from "../controllers/placeserviceController.js";
 
 const orderRouter = express.Router();
 
-orderRouter.post("/place",authMiddleware,placeService);
+orderRouter.post("/place",placeService);
 
 orderRouter.post("/userOrders",authMiddleware,userOrders)
 orderRouter.get('/list',listOrders)

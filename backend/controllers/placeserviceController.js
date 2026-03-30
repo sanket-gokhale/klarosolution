@@ -13,7 +13,7 @@ const placeService = async (req,res) =>{
   try {
 
     const newOrder = new orderModel({
-      userId: req.body.userId,   // or from auth middleware
+      userId: req.body.userId || null,   // Allow anonymous orders
       items: req.body.items,
       amount: req.body.amount,
       address: req.body.address,
@@ -23,9 +23,12 @@ const placeService = async (req,res) =>{
 
     await newOrder.save();
 
-    await userModel.findByIdAndUpdate(req.body.userId, {
-      cartData: {}
-    });
+    // Only clear cart if user is logged in
+    if (req.body.userId) {
+      await userModel.findByIdAndUpdate(req.body.userId, {
+        cartData: {}
+      });
+    }
 
     res.json({
       success: true,
