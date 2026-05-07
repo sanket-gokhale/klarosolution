@@ -7,10 +7,23 @@ import { StoreContext } from '../../Context/StoreContext'
 const AppaincesItem = ({id,name,price,description,image}) => {
    
     const {cartItems,addToCart,removeFromCart,url} = useContext(StoreContext);
+    const [loaded, setLoaded] = React.useState(false);
+
   return (
     <div className='appainces-item'>
         <div className='appainces-item-img-container'>
-            <img className='appainces-item-image' src={url+"/images/"+image} alt=''/>
+            <img 
+                className={`appainces-item-image ${loaded ? 'loaded' : ''}`}
+                src={url+"/images/"+image} 
+                alt={name} 
+                loading="lazy"
+                onLoad={() => setLoaded(true)}
+                onError={(e) => {
+                    e.target.src = assets.header_img; 
+                    e.target.style.opacity = '0.5';
+                    setLoaded(true);
+                }}
+            />
             {!cartItems[id]
                 ?<img className='add' onClick={()=>addToCart(id)} src={assets.add_icon_white} alt='' />
                 :<div className='appainces-iteam-counter'>

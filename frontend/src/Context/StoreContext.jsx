@@ -8,9 +8,10 @@ const StoreContextProvider = (props) => {
 
     const [cartItems, setCartItems] = useState({});
 
-   const url = "https://klarosolution.onrender.com";
+   const url = import.meta.env.DEV ? "http://localhost:4000" : "https://klarosolution.onrender.com";
    const [token,setToken] = useState("");
-   const [appainces_list,setAppaincesList] = useState([])
+    const [appainces_list,setAppaincesList] = useState([])
+    const [loading, setLoading] = useState(true);
 
     const addToCart = async (itemId) => {
         if (!cartItems[itemId]) {
@@ -45,9 +46,15 @@ const StoreContextProvider = (props) => {
     }
 
     const fetchAppaincesList = async () =>{
-
-        const response = await axios.get(url+"/api/service/list");
-        setAppaincesList(response.data.data)
+        setLoading(true);
+        try {
+            const response = await axios.get(url+"/api/service/list");
+            setAppaincesList(response.data.data)
+        } catch (error) {
+            console.error("Error fetching appliances list:", error);
+        } finally {
+            setLoading(false);
+        }
     }
 
     const loadCartData = async (token) => {
@@ -82,7 +89,8 @@ const StoreContextProvider = (props) => {
         getTotalCartAmount,
         url,
         token,
-        setToken
+        setToken,
+        loading
 
     }
     return (

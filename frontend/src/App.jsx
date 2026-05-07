@@ -1,14 +1,20 @@
-import React, { useState } from 'react'
+import React, { useState, lazy, Suspense } from 'react'
 import Navbar from './components/Navbar/Navbar'
 import { Route, Routes } from 'react-router-dom'
 import Home from './pages/Home/Home'
-import Cart from './pages/Cart/Cart'
-
-import PlaceService from './pages/PlaceService/PlaceService'
 import Footer from './components/Footer/Footer'
 import LoginPopup from './components/LoginPopup/LoginPopup'
-import MyOrders from './pages/MyOrders/MyOrders'
-import Terms from './pages/Terms'
+
+const Cart = lazy(() => import('./pages/Cart/Cart'))
+const PlaceService = lazy(() => import('./pages/PlaceService/PlaceService'))
+const MyOrders = lazy(() => import('./pages/MyOrders/MyOrders'))
+const Terms = lazy(() => import('./pages/Terms'))
+
+const LoadingSpinner = () => (
+  <div className="loading-spinner-container">
+    <div className="loading-spinner"></div>
+  </div>
+)
 
 
 
@@ -20,14 +26,16 @@ const App = () => {
       <div className='app'>
 
         <Navbar setShowLogin={setShowLogin} />
-        <Routes>
-          <Route path='/' element={<Home />} />
-          <Route path='/cart' element={<Cart />} />
-          <Route path='/order' element={<PlaceService />} />
+        <Suspense fallback={<LoadingSpinner />}>
+          <Routes>
+            <Route path='/' element={<Home />} />
+            <Route path='/cart' element={<Cart />} />
+            <Route path='/order' element={<PlaceService />} />
 
-          <Route path='/myorders' element={<MyOrders />} />
-          <Route path='/terms' element={<Terms />} />
-        </Routes>
+            <Route path='/myorders' element={<MyOrders />} />
+            <Route path='/terms' element={<Terms />} />
+          </Routes>
+        </Suspense>
       </div>
       <Footer />
     </>

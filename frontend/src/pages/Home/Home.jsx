@@ -9,7 +9,6 @@ const Home = () => {
   return (
     <div>
         <Header/>
-        <p></p>
            <ExploreMenu category={category} setCategory={setCategory}/>
            <AppaincesDisplay category={category}/>
            
