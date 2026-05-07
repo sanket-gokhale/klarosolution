@@ -21,6 +21,12 @@ const port = process.env.PORT || 4000
 app.use(express.json())
 app.use(cors())
 
+// Ensure uploads directory exists
+const uploadsDir = path.join(__dirname, 'uploads');
+if (!fs.existsSync(uploadsDir)) {
+    fs.mkdirSync(uploadsDir);
+}
+
 // db connection
 connectDB();
 
