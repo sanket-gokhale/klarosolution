@@ -6,9 +6,11 @@ import serviceRouter from "./routes/serviceRoute.js"
 import userRouter from "./routes/userRoute.js"
 import cartRouter from "./routes/cartRoute.js"
 import orderRouter from "./routes/orderRoute.js"
+import path from 'path'
+import { fileURLToPath } from 'url'
 
-
-
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = path.dirname(__filename)
 
 //app config
 const app=express()
@@ -24,7 +26,7 @@ connectDB();
 
 //api endpoint
 app.use("/api/service",serviceRouter)
-app.use("/images",express.static('uploads'))
+app.use("/images", express.static(path.join(__dirname, 'uploads')))
 app.use("/api/user",userRouter)
 app.use("/api/cart",cartRouter)
 app.use("/api/order",orderRouter)

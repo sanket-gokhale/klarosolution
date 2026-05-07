@@ -10,7 +10,7 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const App = () => {
-  const url = "https://klarosolution.onrender.com"
+  const url = window.location.hostname === "localhost" ? "http://localhost:4000" : "https://klarosolution.onrender.com"
 
   const [isAdmin, setIsAdmin] = useState(false)
 

@@ -14,7 +14,7 @@ const AppaincesItem = ({id,name,price,description,image}) => {
         <div className='appainces-item-img-container'>
             <img 
                 className={`appainces-item-image ${loaded ? 'loaded' : ''}`}
-                src={url+"/images/"+image} 
+                src={url + "/images/" + encodeURIComponent(image)} 
                 alt={name} 
                 loading="lazy"
                 onLoad={() => setLoaded(true)}
